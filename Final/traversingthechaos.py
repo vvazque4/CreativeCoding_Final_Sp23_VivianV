@@ -1,4 +1,3 @@
-#first GUI program
 from tkinter import *
 
 #create window
@@ -9,6 +8,7 @@ window.title('Traversing the Chaos')
 canvas = Canvas(window, width=720,height=540, bg = 'pink')
 canvas.pack()
 
+#player movement
 def move_circle(event):
     key = event.keysym
     if key == "Right":
@@ -36,7 +36,7 @@ def move_circle(event):
         canvas.move(circle2,0,4)
         canvas.move(circle1,0,2)
        
-
+#changing color on left click
 def change_color_1(event):
     canvas.configure(bg='black')
     canvas.itemconfig(playercircle, fill = 'red')
@@ -45,7 +45,7 @@ def change_color_1(event):
     canvas.itemconfig(circle3, outline = 'white')
     canvas.itemconfig(circle4, outline = 'red')
     
-    
+#changing color on right click    
 def change_color_2(event):
     canvas.configure(bg='pink')
     canvas.itemconfig(playercircle, fill = 'black')
@@ -62,8 +62,9 @@ canvas.bind('<Button-1>', change_color_1)
 canvas.bind('<Button-3>', change_color_2)
 
 
-#bg lines
+##BG
 
+#bg lines
 def make_purpleline_move():
     line_list1 = []
     
@@ -116,16 +117,18 @@ def make_blacklines_2():
     window.after(10, move_line_1)
     window.after(10, move_line_2)
 
+#bg squiggle
 canvas.create_line(370,487,535,485, fill='blue', width=5)
 canvas.create_line(535,485,465,473, fill='blue', width=5)
 canvas.create_line(465,473,630,471, fill='blue', width=5)
 canvas.create_line(630,471,595,462, fill='blue', width=5)
 canvas.create_line(595,462,722,459, fill='blue', width=5)
 
-#bg circles
+#bg circles for eye
 bgcircleset_1 = canvas.create_oval(32,60,140,130, outline = 'black', width=4)
 bgcircleset_2 = canvas.create_oval(25,53,147,137, outline = 'red', width=3)
 
+#bg eye puil
 def make_eye_move():
     eye_list = []
     def make_eye():
@@ -152,7 +155,7 @@ bgcircle_fill = canvas.create_oval(527,316,559,348, fill = 'black')
 canvas.create_arc(20,423,67,363, extent =-270, outline = '', fill ='darkorange', width =4)
 canvas.create_arc(40,472,110,392, extent =-260, outline = '', fill ='darkorange', width =4)
 
-#bg polygons
+#bg polygon
 points = [50, 290, 115, 370, 134, 320, 176, 470, 172, 520]
 canvas.create_polygon(points, outline = 'blue', fill = '', width = 3)
 
@@ -166,13 +169,15 @@ circle4 = canvas.create_oval(320,230,400,310, outline = 'black', width=3)
 playercircle = canvas.create_oval(335,245,385,295, fill = 'black')
 
 
-#fg lines
+##FG
 
+#fg lines
 canvas.create_line(22,229,208,229, fill='darkorange', width=6)
 canvas.create_line(55,340,235,340, fill='blue', width=10)
 canvas.create_line(235,340,155,315, fill='blue', width=10)
 canvas.create_line(155,315,270,311, fill='blue', width=10)
 
+#fg squiggle
 def make_blacksquiggle():
 
     line_list1 = []
@@ -248,11 +253,10 @@ def make_blacksquiggle():
     window.after(10, move_line_5)
 
 
-#fg circles
+#fg circle
 fgcircle_1 = canvas.create_oval(648,202,684,238, outline = 'black', width=7)
 
 #fg arcs
-
 def make_fgarcs():
     arc_list1 = []
     arc_list2 = []
@@ -283,11 +287,13 @@ def make_fgarcs():
     window.after(10, make_arc2)
     window.after(10, move_arc1)
     window.after(10, move_arc2)
-    
+
+#set looping movement    
 window.after(10, make_purpleline_move)
 window.after(10, make_blacklines_2)
 window.after(10, make_eye_move)
 window.after(10, make_blacksquiggle)
 window.after(10, make_fgarcs)
 
+#set main loop
 window.mainloop()
