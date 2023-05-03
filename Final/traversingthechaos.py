@@ -1,6 +1,5 @@
 #first GUI program
 from tkinter import *
-from tkinter import ttk
 
 #create window
 window = Tk()
